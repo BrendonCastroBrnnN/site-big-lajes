@@ -10,9 +10,8 @@ import {
   Phone,
   MessageCircle,
   MapPin,
-  Clock,
+  Mail,
   ChevronDown,
-  Star,
   ArrowRight,
   Building2,
   Home,
@@ -23,72 +22,106 @@ import {
   X,
 } from "lucide-react";
 
-const WHATSAPP_NUMBER = "5531999999999";
-const PHONE_NUMBER = "(31) 3333-4444";
-const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento%20de%20lajes%20treli%C3%A7adas.`;
-const VISIT_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20visita%20t%C3%A9cnica.`;
+const WHATSAPP_NUMBER = "5531999785847";
+const WHATSAPP_DISPLAY = "(31) 99978-5847";
 
-/* color tokens */
-const C_DARK = "#1a1410";
-const C_TEAL = "#2d5a4e";
-const C_AMBER = "#c8860a";
-const C_BG = "#f7f6f3";
-const C_MUTED = "#6b6357";
-const C_CARD = "#ffffff";
-const C_GREEN_WA = "#25d366";
+const PHONE_NUMBER = "553133855593";
+const PHONE_DISPLAY = "(31) 3385-5593";
+
+const EMAIL = "biglajesbh@hotmail.com";
+const ADDRESS =
+  "Av. Nélio Cerqueira, 715 - Tirol, Belo Horizonte - MG, CEP 30662-060";
+const MAPS_LINK =
+  "https://www.google.com/maps/search/?api=1&query=Av.+Nélio+Cerqueira,+715,+Tirol,+Belo+Horizonte,+MG";
+
+const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20uma%20cota%C3%A7%C3%A3o%20de%20lajes.`;
+const VISIT_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20visita%20%C3%A0%20Big%20Lajes.`;
 
 const diferenciais = [
-  { icon: Award, title: "Mais de 30 Anos de Mercado", desc: "Décadas de experiência e centenas de obras atendidas em BH e Região Metropolitana." },
-  { icon: Factory, title: "Fabricação Própria", desc: "Produção própria garante controle de qualidade total, desde a matéria-prima até a entrega." },
-  { icon: Headphones, title: "Atendimento Especializado", desc: "Nossa equipe técnica orienta você em cada etapa do projeto, com suporte completo." },
-  { icon: Truck, title: "Entrega em BH e RMBH", desc: "Atendemos Belo Horizonte e toda a Região Metropolitana com agilidade e pontualidade." },
-  { icon: DollarSign, title: "Melhor Custo-Benefício", desc: "Preço justo e competitivo sem abrir mão da qualidade que sua obra merece." },
-  { icon: HardHat, title: "Suporte Técnico na Obra", desc: "Acompanhamento e orientação técnica para garantir o melhor resultado na instalação." },
+  {
+    icon: Award,
+    title: "Mais de 30 Anos de Mercado",
+    desc: "Experiência de mais de três décadas atendendo obras em Belo Horizonte e Região Metropolitana.",
+  },
+  {
+    icon: Factory,
+    title: "Fabricação Própria",
+    desc: "Produção própria e atendimento direto, sem intermediários.",
+  },
+  {
+    icon: Headphones,
+    title: "Atendimento Personalizado",
+    desc: "Atendimento para entender as necessidades da sua obra e preparar uma cotação.",
+  },
+  {
+    icon: Truck,
+    title: "Entrega em BH e Região Metropolitana",
+    desc: "Realizamos entregas mediante cotação de frete e disponibilidade para cada localidade.",
+  },
+  {
+    icon: DollarSign,
+    title: "Preço Competitivo",
+    desc: "Condições competitivas e excelente custo-benefício para sua construção.",
+  },
+  {
+    icon: HardHat,
+    title: "Visita à Empresa",
+    desc: "Entre em contato para verificar a disponibilidade e agendar uma visita.",
+  },
 ];
 
 const produtos = [
   {
     icon: Grid3x3,
     title: "Lajes Treliçadas",
-    desc: "Lajes treliçadas de alta resistência, fabricadas com aço e concreto de qualidade superior para garantir segurança e durabilidade.",
+    desc: "Lajes treliçadas fabricadas para atender diferentes tipos de obras residenciais e comerciais.",
     tags: ["Residencial", "Comercial"],
     accent: true,
   },
   {
     icon: Layers,
     title: "Vigotas Treliçadas",
-    desc: "Vigotas treliçadas com rigoroso controle de qualidade, ideais para todos os tipos de construção civil.",
-    tags: ["Alta Resistência", "Durabilidade"],
+    desc: "Vigotas treliçadas produzidas sob medida conforme as necessidades informadas para cada obra.",
+    tags: ["Sob Medida", "Fabricação Própria"],
     accent: false,
-  },
-  {
-    icon: Building2,
-    title: "Elementos Pré-moldados",
-    desc: "Peças pré-moldadas de concreto para agilizar sua obra com máxima qualidade e padronização.",
-    tags: ["Agilidade", "Padronização"],
-    accent: true,
   },
   {
     icon: Home,
     title: "Soluções Residenciais",
-    desc: "Soluções completas para casas e sobrados, com orientação técnica especializada do projeto à entrega.",
+    desc: "Atendimento para casas, sobrados, ampliações e reformas em Belo Horizonte e Região Metropolitana.",
     tags: ["Casas", "Sobrados"],
-    accent: false,
+    accent: true,
   },
   {
     icon: Building2,
     title: "Soluções Comerciais",
-    desc: "Atendemos prédios e obras comerciais de médio e grande porte com capacidade de produção e entrega ágil.",
-    tags: ["Prédios", "Grandes Obras"],
-    accent: true,
+    desc: "Fornecimento de lajes treliçadas para obras comerciais, mediante análise e cotação.",
+    tags: ["Comercial", "Cotação"],
+    accent: false,
   },
 ];
 
 const passos = [
-  { num: "01", title: "Entre em Contato", desc: "Fale conosco pelo WhatsApp ou telefone e descreva sua necessidade." },
-  { num: "02", title: "Orientação Técnica", desc: "Nossa equipe analisa seu projeto e fornece orientação especializada." },
-  { num: "03", title: "Solicite Orçamento", desc: "Receba um orçamento detalhado, transparente e sem compromisso." },
-  { num: "04", title: "Receba na Obra", desc: "Entregamos o material diretamente na sua obra, no prazo combinado." },
+  {
+    num: "01",
+    title: "Entre em Contato",
+    desc: "Fale conosco pelo WhatsApp ou telefone e informe o que sua obra precisa.",
+  },
+  {
+    num: "02",
+    title: "Envie as Informações",
+    desc: "Compartilhe as medidas, o projeto ou os dados necessários para a cotação.",
+  },
+  {
+    num: "03",
+    title: "Receba a Cotação",
+    desc: "Receba uma proposta com os materiais e as condições de entrega.",
+  },
+  {
+    num: "04",
+    title: "Receba na Obra",
+    desc: "Após a confirmação, combinamos a produção e a entrega no endereço informado.",
+  },
 ];
 
 const galeria = [
@@ -100,42 +133,6 @@ const galeria = [
   { url: "https://images.unsplash.com/photo-1628012209120-d9db7abf7eab?w=800&h=600&fit=crop&auto=format", alt: "Edifício comercial em construção" },
 ];
 
-const depoimentos = [
-  {
-    nome: "Carlos Mendonça",
-    cargo: "Mestre de Obras",
-    texto: "Trabalho com a BIG LAJES há mais de 8 anos. Material de primeira qualidade, entrega sempre no prazo e equipe técnica muito competente. Recomendo sem hesitar para qualquer obra em BH.",
-    nota: 5,
-  },
-  {
-    nome: "Eng. Paulo Ribeiro",
-    cargo: "Engenheiro Civil",
-    texto: "Como engenheiro, priorizo qualidade e confiabilidade. A BIG LAJES entrega exatamente isso — laudos técnicos, materiais dentro da norma e suporte especializado durante toda a obra.",
-    nota: 5,
-  },
-  {
-    nome: "Construtora Almeida & Filhos",
-    cargo: "Pequena Construtora",
-    texto: "Custo-benefício excelente! Já usamos em mais de 30 obras residenciais. Atendimento rápido, preço justo e qualidade consistente. São nosso fornecedor preferencial de lajes.",
-    nota: 5,
-  },
-  {
-    nome: "Arq. Fernanda Costa",
-    cargo: "Arquiteta",
-    texto: "Parceria incrível! A equipe técnica da BIG LAJES entende de projeto e ajuda a escolher a melhor solução. Resultado final sempre acima do esperado pelos clientes.",
-    nota: 5,
-  },
-];
-
-function StarRating({ count }: { count: number }) {
-  return (
-    <div className="flex gap-0.5">
-      {Array.from({ length: count }).map((_, i) => (
-        <Star key={i} size={15} className="fill-[#c8860a] text-[#c8860a]" />
-      ))}
-    </div>
-  );
-}
 
 function Navbar({ menuOpen, setMenuOpen }: { menuOpen: boolean; setMenuOpen: (v: boolean) => void }) {
   const [scrolled, setScrolled] = useState(false);
@@ -199,7 +196,7 @@ function Navbar({ menuOpen, setMenuOpen }: { menuOpen: boolean; setMenuOpen: (v:
               style={{ fontFamily: "'Barlow', sans-serif" }}
             >
               <Phone size={14} />
-              {PHONE_NUMBER}
+              {PHONE_DISPLAY}
             </a>
             <a
               href={WHATSAPP_LINK}
@@ -238,7 +235,7 @@ function Navbar({ menuOpen, setMenuOpen }: { menuOpen: boolean; setMenuOpen: (v:
           ))}
           <div className="pt-3 border-t border-white/10 flex flex-col gap-3">
             <a href={`tel:${PHONE_NUMBER}`} className="flex items-center gap-2 text-white/80 text-sm" style={{ fontFamily: "'Barlow', sans-serif" }}>
-              <Phone size={14} /> {PHONE_NUMBER}
+              <Phone size={14} /> {PHONE_DISPLAY}
             </a>
             <a
               href={WHATSAPP_LINK}
@@ -283,7 +280,7 @@ function HeroSection() {
           >
             <Award size={13} className="text-[#c8860a]" />
             <span className="text-[#c8860a] text-xs tracking-widest" style={{ fontFamily: "'Barlow', sans-serif", fontWeight: 700 }}>
-              FABRICANTE PRÓPRIO — DESDE 1993
+              FABRICAÇÃO PRÓPRIA — MAIS DE 30 ANOS
             </span>
           </motion.div>
 
@@ -369,7 +366,7 @@ function HeroSection() {
           >
             {[
               { value: "30+", label: "Anos de Mercado" },
-              { value: "500+", label: "Obras Atendidas" },
+              { value: "BH e RMBH", label: "Região Atendida" },
               { value: "100%", label: "Fabricação Própria" },
             ].map((stat) => (
               <div key={stat.label}>
@@ -483,23 +480,39 @@ function SobreSection() {
             >
               Tradição e confiança para sua construção
             </h2>
-            <p className="mb-5 leading-relaxed" style={{ fontFamily: "'Barlow', sans-serif", fontSize: "1rem", color: "rgba(255,255,255,0.72)", lineHeight: 1.75 }}>
-              A <strong style={{ color: "white" }}>BIG LAJES</strong> nasceu em Belo Horizonte com um propósito claro: oferecer lajes
-              treliçadas de altíssima qualidade, com atendimento próximo e comprometido. Ao longo de mais de três décadas,
-              consolidamos nossa presença na construção civil mineira.
+            <p
+              className="mb-5 leading-relaxed"
+              style={{
+                fontFamily: "'Barlow', sans-serif",
+                fontSize: "1rem",
+                color: "rgba(255,255,255,0.72)",
+                lineHeight: 1.75,
+              }}
+            >
+              A <strong style={{ color: "white" }}>BIG LAJES</strong> atua há mais de
+              30 anos no mercado, oferecendo lajes treliçadas para obras em Belo
+              Horizonte e Região Metropolitana.
             </p>
-            <p className="mb-8 leading-relaxed" style={{ fontFamily: "'Barlow', sans-serif", fontSize: "1rem", color: "rgba(255,255,255,0.72)", lineHeight: 1.75 }}>
-              Com fabricação 100% própria, controlamos cada etapa do processo produtivo. Nossa equipe de engenheiros e
-              técnicos especializados garante que cada laje entregue esteja dentro das normas ABNT, com o padrão de
-              resistência que sua obra exige.
+            <p
+              className="mb-8 leading-relaxed"
+              style={{
+                fontFamily: "'Barlow', sans-serif",
+                fontSize: "1rem",
+                color: "rgba(255,255,255,0.72)",
+                lineHeight: 1.75,
+              }}
+            >
+              Com fabricação própria, atendimento direto e experiência no setor,
+              buscamos oferecer qualidade, preço competitivo e uma solução adequada
+              para cada obra.
             </p>
 
             <div className="grid grid-cols-2 gap-4 mb-8">
               {[
-                "Mais de 3 décadas de atuação",
-                "Centenas de obras atendidas",
-                "Compromisso com qualidade",
-                "Equipe técnica experiente",
+                "Mais de 30 anos de mercado",
+                "Fabricação própria",
+                "Atendimento direto",
+                "Entrega em BH e Região Metropolitana",
               ].map((text) => (
                 <div key={text} className="flex items-start gap-3">
                   <CheckCircle2 size={17} className="mt-0.5 shrink-0" style={{ color: "#c8860a" }} />
@@ -515,7 +528,7 @@ function SobreSection() {
               className="inline-flex items-center gap-2 px-7 py-3 rounded text-white transition-all hover:scale-105"
               style={{ background: "#c8860a", fontFamily: "'Barlow', sans-serif", fontWeight: 700 }}
             >
-              Falar com Especialista <ArrowRight size={17} />
+              Solicitar Cotação <ArrowRight size={17} />
             </a>
           </motion.div>
 
@@ -529,7 +542,7 @@ function SobreSection() {
             <div className="relative rounded-xl overflow-hidden" style={{ aspectRatio: "4/3", background: "#2d5a4e" }}>
               <img
                 src="https://images.unsplash.com/photo-1772442198624-4fc4d7281e89?w=800&h=600&fit=crop&auto=format"
-                alt="Engenheiro revisando planta em canteiro de obras"
+                alt="Profissional trabalhando em obra de construção civil"
                 className="w-full h-full object-cover"
               />
               <div
@@ -766,63 +779,6 @@ function GaleriaSection() {
   );
 }
 
-function DepoimentosSection() {
-  return (
-    <section id="depoimentos" className="py-20 lg:py-28" style={{ background: "#f7f6f3" }}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-14">
-          <span className="text-xs tracking-widest uppercase" style={{ fontFamily: "'Barlow', sans-serif", fontWeight: 700, color: "#c8860a" }}>
-            Satisfação garantida
-          </span>
-          <h2
-            className="mt-2"
-            style={{
-              fontFamily: "'Barlow Condensed', sans-serif",
-              fontSize: "clamp(2rem, 4vw, 3rem)",
-              fontWeight: 800,
-              lineHeight: 1.1,
-              color: "#1a1410",
-            }}
-          >
-            O que nossos clientes dizem
-          </h2>
-          <div className="w-14 h-1 bg-[#c8860a] mx-auto mt-4 rounded-full" />
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {depoimentos.map((dep, i) => (
-            <motion.div
-              key={dep.nome}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="bg-white rounded-xl p-6 border flex flex-col"
-              style={{ borderColor: "rgba(13,27,42,0.08)" }}
-            >
-              <StarRating count={dep.nota} />
-              <p
-                className="my-5 flex-1 italic leading-relaxed"
-                style={{ fontFamily: "'Barlow', sans-serif", fontSize: "0.9rem", color: "#374151" }}
-              >
-                "{dep.texto}"
-              </p>
-              <div className="border-t pt-4" style={{ borderColor: "rgba(13,27,42,0.08)" }}>
-                <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, color: "#1a1410", fontSize: "1rem" }}>
-                  {dep.nome}
-                </div>
-                <div style={{ fontFamily: "'Barlow', sans-serif", fontSize: "0.8rem", color: "#c8860a", fontWeight: 600, marginTop: 2 }}>
-                  {dep.cargo}
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function CTASection() {
   return (
     <section className="py-20 lg:py-28 relative overflow-hidden" style={{ background: "#c8860a" }}>
@@ -888,7 +844,7 @@ function CTASection() {
               }}
             >
               <Phone size={20} />
-              {PHONE_NUMBER}
+              {PHONE_DISPLAY}
             </a>
           </div>
         </motion.div>
@@ -962,10 +918,30 @@ function Footer() {
             </h4>
             <ul className="space-y-4">
               {[
-                { icon: Phone, primary: PHONE_NUMBER, sub: "Fixo", href: `tel:${PHONE_NUMBER}` },
-                { icon: MessageCircle, primary: "(31) 9 9999-9999", sub: "WhatsApp", href: WHATSAPP_LINK },
-                { icon: MapPin, primary: "Belo Horizonte, MG", sub: "BH e Região Metropolitana", href: undefined },
-                { icon: Clock, primary: "Seg–Sex: 07h–17h", sub: "Sáb: 07h–12h", href: undefined },
+                {
+                  icon: Phone,
+                  primary: PHONE_DISPLAY,
+                  sub: "Telefone fixo",
+                  href: `tel:${PHONE_NUMBER}`,
+                },
+                {
+                  icon: MessageCircle,
+                  primary: WHATSAPP_DISPLAY,
+                  sub: "WhatsApp",
+                  href: WHATSAPP_LINK,
+                },
+                {
+                  icon: MapPin,
+                  primary: ADDRESS,
+                  sub: "Clique para abrir no Google Maps",
+                  href: MAPS_LINK,
+                },
+                {
+                  icon: Mail,
+                  primary: EMAIL,
+                  sub: "E-mail",
+                  href: `mailto:${EMAIL}`,
+                },
               ].map((item) => (
                 <li key={item.primary} className="flex items-start gap-3">
                   <item.icon size={14} className="mt-0.5 shrink-0" style={{ color: "#c8860a" }} />
@@ -997,7 +973,7 @@ function Footer() {
 
         <div className="pt-7 flex flex-col sm:flex-row justify-between items-center gap-3">
           <p className="text-xs" style={{ fontFamily: "'Barlow', sans-serif", color: "rgba(255,255,255,0.35)" }}>
-            © 2024 BIG LAJES. Todos os direitos reservados. | Fabricante de lajes treliçadas em BH e Região Metropolitana.
+            © {new Date().getFullYear()} BIG LAJES. Todos os direitos reservados. | Fabricante de lajes treliçadas em BH e Região Metropolitana.
           </p>
           <p className="text-xs" style={{ fontFamily: "'Barlow', sans-serif", color: "rgba(255,255,255,0.2)" }}>
             lajes treliçadas BH · fabricante de lajes Belo Horizonte · lajes pré-moldadas BH · lajes Minas Gerais
@@ -1047,7 +1023,6 @@ export default function App() {
         <ProdutosSection />
         <ComoFuncionaSection />
         <GaleriaSection />
-        <DepoimentosSection />
         <CTASection />
       </main>
       <Footer />
