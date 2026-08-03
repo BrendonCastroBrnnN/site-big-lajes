@@ -1,0 +1,11 @@
+﻿{
+  "name": "Big Lajes",
+  "short_name": "Big Lajes",
+  "description": "Fabricante de lajes treliçadas com fabricação própria e atendimento em Belo Horizonte e Região Metropolitana.",
+  "lang": "pt-BR",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#1a1410",
+  "theme_color": "#1a1410"
+}
