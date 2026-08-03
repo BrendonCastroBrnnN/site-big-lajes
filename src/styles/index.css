@@ -1,3 +1,69 @@
 @import './fonts.css';
 @import './tailwind.css';
 @import './theme.css';
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 112px;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  overflow-x: hidden;
+  background: #ffffff;
+}
+
+section[id],
+footer[id] {
+  scroll-margin-top: 112px;
+}
+
+a,
+button,
+summary {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible {
+  outline: 3px solid #d79a1d;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+button,
+a {
+  touch-action: manipulation;
+}
+
+img {
+  max-width: 100%;
+}
+
+@media (max-width: 767px) {
+  html {
+    scroll-padding-top: 80px;
+  }
+
+  section[id],
+  footer[id] {
+    scroll-margin-top: 80px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
