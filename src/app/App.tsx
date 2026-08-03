@@ -264,10 +264,10 @@ function Navbar({ menuOpen, setMenuOpen }: { menuOpen: boolean; setMenuOpen: (v:
 
 function HeroSection() {
   const benefits = [
-    "Fabricação própria",
-    "Mais de 30 anos de mercado",
-    "Atendimento direto",
-    "Entrega mediante cotação",
+    { icon: Factory, label: "Fabricação própria" },
+    { icon: Award, label: "Mais de 30 anos de mercado" },
+    { icon: Headphones, label: "Atendimento direto" },
+    { icon: Truck, label: "Entrega mediante cotação" },
   ];
 
   return (
@@ -279,28 +279,42 @@ function HeroSection() {
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{
-          backgroundImage: "url('https://images.unsplash.com/photo-1565118387387-add70a563efe?w=1920&h=1080&fit=crop&auto=format')",
+          backgroundImage:
+            "url('https://images.unsplash.com/photo-1565118387387-add70a563efe?w=1920&h=1080&fit=crop&auto=format')",
         }}
       />
       <div
         className="absolute inset-0"
         style={{
-          background: "linear-gradient(90deg, rgba(26,20,16,0.98) 0%, rgba(26,20,16,0.9) 48%, rgba(26,20,16,0.45) 100%)",
+          background:
+            "linear-gradient(90deg, rgba(26,20,16,0.98) 0%, rgba(26,20,16,0.9) 46%, rgba(26,20,16,0.48) 100%)",
         }}
       />
-      <div className="absolute inset-0 opacity-30" style={{ background: "radial-gradient(circle at 72% 45%, rgba(200,134,10,0.35), transparent 34%)" }} />
+      <div
+        className="absolute inset-0 opacity-30"
+        style={{
+          background:
+            "radial-gradient(circle at 72% 45%, rgba(200,134,10,0.35), transparent 34%)",
+        }}
+      />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 md:pt-44 pb-20 w-full">
-        <div className="max-w-4xl">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 md:pt-36 lg:pt-40 pb-10 lg:pb-12 w-full">
+        <div className="max-w-3xl">
           <motion.div
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.45 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 border"
-            style={{ borderColor: "rgba(200,134,10,0.55)", background: "rgba(200,134,10,0.12)" }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-4 border"
+            style={{
+              borderColor: "rgba(200,134,10,0.55)",
+              background: "rgba(200,134,10,0.12)",
+            }}
           >
             <Factory size={14} className="text-[#c8860a]" />
-            <span className="text-[#e0a62e] text-xs tracking-[0.16em]" style={{ fontWeight: 800 }}>
+            <span
+              className="text-[#e0a62e] text-xs tracking-[0.16em]"
+              style={{ fontWeight: 800 }}
+            >
               FABRICANTE DE LAJES TRELIÇADAS
             </span>
           </motion.div>
@@ -309,13 +323,14 @@ function HeroSection() {
             initial={{ opacity: 0, y: 26 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, delay: 0.08 }}
-            className="text-white mb-6"
+            className="text-white mb-5"
             style={{
               fontFamily: "'Barlow Condensed', sans-serif",
-              fontSize: "clamp(2.8rem, 7vw, 5.5rem)",
+              fontSize: "clamp(2.45rem, 5.2vw, 4.35rem)",
               fontWeight: 800,
-              lineHeight: 1.02,
+              lineHeight: 1.04,
               letterSpacing: "-0.02em",
+              maxWidth: "800px",
             }}
           >
             Lajes para sua obra com{" "}
@@ -327,58 +342,88 @@ function HeroSection() {
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, delay: 0.18 }}
-            className="text-white/75 mb-8 max-w-2xl"
-            style={{ fontSize: "clamp(1rem, 2vw, 1.18rem)", lineHeight: 1.7 }}
+            className="text-white/75 mb-6 max-w-2xl"
+            style={{
+              fontSize: "clamp(0.98rem, 1.5vw, 1.08rem)",
+              lineHeight: 1.65,
+            }}
           >
-            Atendemos obras residenciais e comerciais em Belo Horizonte e Região Metropolitana, com atendimento direto da fábrica, preço competitivo e cotação sem compromisso.
+            Atendemos obras residenciais e comerciais em Belo Horizonte e
+            Região Metropolitana, com atendimento direto da fábrica, preço
+            competitivo e cotação sem compromisso.
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, delay: 0.26 }}
-            className="flex flex-col sm:flex-row gap-4"
+            className="flex flex-col sm:flex-row gap-3"
           >
             <a
               href={WHATSAPP_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-3 px-8 py-4 rounded-lg text-white transition-all hover:-translate-y-1 active:scale-95"
-              style={{ background: "#25d366", fontSize: "1.02rem", fontWeight: 800, boxShadow: "0 8px 30px rgba(37,211,102,0.32)" }}
+              className="flex items-center justify-center gap-3 px-7 py-3.5 rounded-lg text-white transition-all hover:-translate-y-1 active:scale-95"
+              style={{
+                background: "#25d366",
+                fontSize: "1rem",
+                fontWeight: 800,
+                boxShadow: "0 8px 30px rgba(37,211,102,0.32)",
+              }}
             >
-              <MessageCircle size={21} />
+              <MessageCircle size={20} />
               Solicitar Cotação
             </a>
             <a
               href={VISIT_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-3 px-8 py-4 rounded-lg text-white transition-all hover:-translate-y-1 active:scale-95 border"
-              style={{ borderColor: "rgba(255,255,255,0.35)", background: "rgba(255,255,255,0.07)", fontSize: "1.02rem", fontWeight: 700, backdropFilter: "blur(5px)" }}
+              className="flex items-center justify-center gap-3 px-7 py-3.5 rounded-lg text-white transition-all hover:-translate-y-1 active:scale-95 border"
+              style={{
+                borderColor: "rgba(255,255,255,0.35)",
+                background: "rgba(255,255,255,0.07)",
+                fontSize: "1rem",
+                fontWeight: 700,
+                backdropFilter: "blur(5px)",
+              }}
             >
-              <MapPin size={20} />
+              <MapPin size={19} />
               Agendar Visita
             </a>
           </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.7, delay: 0.42 }}
-            className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3 max-w-2xl"
-          >
-            {benefits.map((benefit) => (
-              <div key={benefit} className="flex items-center gap-2 text-white/75 text-sm">
-                <CheckCircle2 size={17} className="text-[#d79a1d] shrink-0" />
-                {benefit}
-              </div>
-            ))}
-          </motion.div>
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.65, delay: 0.4 }}
+          className="mt-8 lg:mt-10 grid grid-cols-2 lg:grid-cols-4 max-w-4xl border-t border-white/15 pt-5"
+        >
+          {benefits.map((benefit, index) => (
+            <div
+              key={benefit.label}
+              className={`flex items-center gap-3 py-2 ${
+                index > 0 ? "lg:border-l lg:border-white/15 lg:pl-5" : ""
+              }`}
+            >
+              <benefit.icon
+                size={25}
+                strokeWidth={1.8}
+                className="text-[#d79a1d] shrink-0"
+              />
+              <span
+                className="text-white/80 text-sm leading-snug"
+                style={{ fontWeight: 600 }}
+              >
+                {benefit.label}
+              </span>
+            </div>
+          ))}
+        </motion.div>
       </div>
 
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 animate-bounce">
-        <ChevronDown size={27} className="text-white/40" />
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 animate-bounce hidden lg:block">
+        <ChevronDown size={25} className="text-white/35" />
       </div>
     </section>
   );
