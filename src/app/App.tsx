@@ -136,6 +136,7 @@ const galeria = [
 
 function Navbar({ menuOpen, setMenuOpen }: { menuOpen: boolean; setMenuOpen: (v: boolean) => void }) {
   const [scrolled, setScrolled] = useState(false);
+
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", handler);
@@ -143,11 +144,11 @@ function Navbar({ menuOpen, setMenuOpen }: { menuOpen: boolean; setMenuOpen: (v:
   }, []);
 
   const navLinks = [
-    { label: "Diferenciais", href: "#diferenciais" },
-    { label: "Sobre", href: "#sobre" },
+    { label: "Início", href: "#inicio" },
     { label: "Produtos", href: "#produtos" },
+    { label: "Sobre", href: "#sobre" },
     { label: "Como Funciona", href: "#como-funciona" },
-    { label: "Galeria", href: "#galeria" },
+    { label: "Dúvidas", href: "#faq" },
     { label: "Contato", href: "#contato" },
   ];
 
@@ -155,14 +156,31 @@ function Navbar({ menuOpen, setMenuOpen }: { menuOpen: boolean; setMenuOpen: (v:
     <header
       className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
       style={{
-        background: scrolled ? "rgba(13,27,42,0.97)" : "rgba(13,27,42,0.75)",
+        background: scrolled ? "rgba(26,20,16,0.98)" : "rgba(26,20,16,0.9)",
         backdropFilter: "blur(12px)",
-        boxShadow: scrolled ? "0 2px 24px rgba(0,0,0,0.4)" : "none",
+        boxShadow: scrolled ? "0 8px 28px rgba(0,0,0,0.24)" : "none",
       }}
     >
+      <div className="hidden md:block border-b border-white/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-9 flex items-center justify-between">
+          <div className="flex items-center gap-5 text-xs text-white/65">
+            <a href={`tel:${PHONE_NUMBER}`} className="flex items-center gap-1.5 hover:text-white transition-colors">
+              <Phone size={12} /> {PHONE_DISPLAY}
+            </a>
+            <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:text-white transition-colors">
+              <MessageCircle size={12} /> {WHATSAPP_DISPLAY}
+            </a>
+            <a href={`mailto:${EMAIL}`} className="flex items-center gap-1.5 hover:text-white transition-colors">
+              <Mail size={12} /> {EMAIL}
+            </a>
+          </div>
+          <span className="text-xs text-white/45">Atendimento em Belo Horizonte e Região Metropolitana</span>
+        </div>
+      </div>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 lg:h-20">
-          <div className="flex items-center gap-3">
+        <div className="flex items-center justify-between h-16 lg:h-[72px]">
+          <a href="#inicio" className="flex items-center gap-3" aria-label="Voltar ao início">
             <div className="w-10 h-10 bg-[#c8860a] rounded flex items-center justify-center">
               <Layers size={22} className="text-white" />
             </div>
@@ -170,81 +188,72 @@ function Navbar({ menuOpen, setMenuOpen }: { menuOpen: boolean; setMenuOpen: (v:
               <div className="text-white tracking-widest text-xl" style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 800 }}>
                 BIG LAJES
               </div>
-              <div className="text-[#c8860a] text-xs tracking-wider leading-none" style={{ fontFamily: "'Barlow', sans-serif", fontWeight: 600 }}>
-                30+ ANOS DE QUALIDADE
+              <div className="text-[#c8860a] text-[11px] tracking-wider leading-none" style={{ fontWeight: 700 }}>
+                FABRICAÇÃO PRÓPRIA
               </div>
             </div>
-          </div>
+          </a>
 
-          <nav className="hidden lg:flex items-center gap-7">
-            {navLinks.map((l) => (
+          <nav className="hidden lg:flex items-center gap-6">
+            {navLinks.map((link) => (
               <a
-                key={l.href}
-                href={l.href}
-                className="text-white/80 hover:text-[#c8860a] transition-colors text-sm"
-                style={{ fontFamily: "'Barlow', sans-serif", fontWeight: 500 }}
+                key={link.href}
+                href={link.href}
+                className="text-white/75 hover:text-[#c8860a] transition-colors text-sm"
+                style={{ fontWeight: 600 }}
               >
-                {l.label}
+                {link.label}
               </a>
             ))}
           </nav>
 
-          <div className="hidden lg:flex items-center gap-3">
-            <a
-              href={`tel:${PHONE_NUMBER}`}
-              className="flex items-center gap-2 text-white/80 hover:text-white transition-colors text-sm"
-              style={{ fontFamily: "'Barlow', sans-serif" }}
-            >
-              <Phone size={14} />
-              {PHONE_DISPLAY}
-            </a>
-            <a
-              href={WHATSAPP_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 py-2 rounded text-white text-sm transition-all hover:opacity-90 active:scale-95"
-              style={{ background: "#25d366", fontFamily: "'Barlow', sans-serif", fontWeight: 700 }}
-            >
-              <MessageCircle size={15} />
-              WhatsApp
-            </a>
-          </div>
+          <a
+            href={WHATSAPP_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden lg:flex items-center gap-2 px-5 py-2.5 rounded-lg text-white text-sm transition-all hover:-translate-y-0.5 hover:shadow-lg active:scale-95"
+            style={{ background: "#25d366", fontWeight: 800 }}
+          >
+            <MessageCircle size={16} />
+            Solicitar Cotação
+          </a>
 
           <button
             className="lg:hidden text-white p-2"
             onClick={() => setMenuOpen(!menuOpen)}
-            aria-label="Menu"
+            aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}
+            aria-expanded={menuOpen}
           >
-            {menuOpen ? <X size={24} /> : <Menu size={24} />}
+            {menuOpen ? <X size={25} /> : <Menu size={25} />}
           </button>
         </div>
       </div>
 
       {menuOpen && (
-        <div className="lg:hidden border-t border-white/10 px-4 py-4 space-y-2" style={{ background: "#1a1410" }}>
-          {navLinks.map((l) => (
+        <div className="lg:hidden border-t border-white/10 px-4 py-4 space-y-1" style={{ background: "#1a1410" }}>
+          {navLinks.map((link) => (
             <a
-              key={l.href}
-              href={l.href}
-              className="block text-white/80 hover:text-[#c8860a] py-2 text-sm"
-              style={{ fontFamily: "'Barlow', sans-serif" }}
+              key={link.href}
+              href={link.href}
+              className="block text-white/80 hover:text-[#c8860a] py-2.5 text-sm"
+              style={{ fontWeight: 600 }}
               onClick={() => setMenuOpen(false)}
             >
-              {l.label}
+              {link.label}
             </a>
           ))}
           <div className="pt-3 border-t border-white/10 flex flex-col gap-3">
-            <a href={`tel:${PHONE_NUMBER}`} className="flex items-center gap-2 text-white/80 text-sm" style={{ fontFamily: "'Barlow', sans-serif" }}>
-              <Phone size={14} /> {PHONE_DISPLAY}
+            <a href={`tel:${PHONE_NUMBER}`} className="flex items-center gap-2 text-white/75 text-sm">
+              <Phone size={15} /> {PHONE_DISPLAY}
             </a>
             <a
               href={WHATSAPP_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 py-3 rounded text-white text-sm"
-              style={{ background: "#25d366", fontFamily: "'Barlow', sans-serif", fontWeight: 700 }}
+              className="flex items-center justify-center gap-2 py-3 rounded-lg text-white text-sm"
+              style={{ background: "#25d366", fontWeight: 800 }}
             >
-              <MessageCircle size={16} /> Chamar no WhatsApp
+              <MessageCircle size={17} /> Solicitar Cotação
             </a>
           </div>
         </div>
@@ -254,144 +263,122 @@ function Navbar({ menuOpen, setMenuOpen }: { menuOpen: boolean; setMenuOpen: (v:
 }
 
 function HeroSection() {
+  const benefits = [
+    "Fabricação própria",
+    "Mais de 30 anos de mercado",
+    "Atendimento direto",
+    "Entrega mediante cotação",
+  ];
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden" style={{ background: "#1a1410" }}>
+    <section
+      id="inicio"
+      className="relative min-h-screen flex items-center overflow-hidden"
+      style={{ background: "#1a1410" }}
+    >
       <div
-        className="absolute inset-0 bg-cover bg-center opacity-20"
-        style={{ backgroundImage: `url('https://images.unsplash.com/photo-1565118387387-add70a563efe?w=1920&h=1080&fit=crop&auto=format')` }}
+        className="absolute inset-0 bg-cover bg-center"
+        style={{
+          backgroundImage: "url('https://images.unsplash.com/photo-1565118387387-add70a563efe?w=1920&h=1080&fit=crop&auto=format')",
+        }}
       />
       <div
         className="absolute inset-0"
-        style={{ background: "linear-gradient(135deg, rgba(13,27,42,0.97) 0%, rgba(30,58,95,0.88) 50%, rgba(13,27,42,0.97) 100%)" }}
+        style={{
+          background: "linear-gradient(90deg, rgba(26,20,16,0.98) 0%, rgba(26,20,16,0.9) 48%, rgba(26,20,16,0.45) 100%)",
+        }}
       />
-      <div
-        className="absolute top-0 right-0 w-1/3 h-full opacity-8 pointer-events-none"
-        style={{ background: "linear-gradient(to left, rgba(249,115,22,0.12), transparent)" }}
-      />
+      <div className="absolute inset-0 opacity-30" style={{ background: "radial-gradient(circle at 72% 45%, rgba(200,134,10,0.35), transparent 34%)" }} />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 w-full">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 md:pt-44 pb-20 w-full">
         <div className="max-w-4xl">
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.45 }}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 border"
-            style={{ borderColor: "rgba(249,115,22,0.5)", background: "rgba(249,115,22,0.1)" }}
+            style={{ borderColor: "rgba(200,134,10,0.55)", background: "rgba(200,134,10,0.12)" }}
           >
-            <Award size={13} className="text-[#c8860a]" />
-            <span className="text-[#c8860a] text-xs tracking-widest" style={{ fontFamily: "'Barlow', sans-serif", fontWeight: 700 }}>
-              FABRICAÇÃO PRÓPRIA — MAIS DE 30 ANOS
+            <Factory size={14} className="text-[#c8860a]" />
+            <span className="text-[#e0a62e] text-xs tracking-[0.16em]" style={{ fontWeight: 800 }}>
+              FABRICANTE DE LAJES TRELIÇADAS
             </span>
           </motion.div>
 
           <motion.h1
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 26 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.1 }}
+            transition={{ duration: 0.65, delay: 0.08 }}
             className="text-white mb-6"
             style={{
               fontFamily: "'Barlow Condensed', sans-serif",
-              fontSize: "clamp(2.6rem, 7vw, 5.2rem)",
+              fontSize: "clamp(2.8rem, 7vw, 5.5rem)",
               fontWeight: 800,
-              lineHeight: 1.05,
+              lineHeight: 1.02,
+              letterSpacing: "-0.02em",
             }}
           >
-            Mais de 30 anos fabricando{" "}
-            <span style={{ color: "#c8860a" }}>lajes treliçadas</span>{" "}
-            com qualidade e confiança.
+            Lajes para sua obra com{" "}
+            <span style={{ color: "#d79a1d" }}>fabricação própria</span>{" "}
+            e mais de 30 anos de experiência.
           </motion.h1>
 
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-white/75 mb-10 max-w-2xl"
-            style={{
-              fontFamily: "'Barlow', sans-serif",
-              fontSize: "clamp(1rem, 2vw, 1.2rem)",
-              lineHeight: 1.75,
-              fontWeight: 400,
-            }}
+            transition={{ duration: 0.55, delay: 0.18 }}
+            className="text-white/75 mb-8 max-w-2xl"
+            style={{ fontSize: "clamp(1rem, 2vw, 1.18rem)", lineHeight: 1.7 }}
           >
-            Atendemos Belo Horizonte e toda a Região Metropolitana com fabricação própria,
-            entrega rápida e excelente custo-benefício.
+            Atendemos obras residenciais e comerciais em Belo Horizonte e Região Metropolitana, com atendimento direto da fábrica, preço competitivo e cotação sem compromisso.
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            transition={{ duration: 0.55, delay: 0.26 }}
             className="flex flex-col sm:flex-row gap-4"
           >
             <a
               href={WHATSAPP_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-3 px-8 py-4 rounded text-white transition-all hover:scale-105 active:scale-95"
-              style={{
-                background: "#25d366",
-                fontFamily: "'Barlow', sans-serif",
-                fontSize: "1.05rem",
-                fontWeight: 700,
-                boxShadow: "0 4px 28px rgba(37,211,102,0.38)",
-              }}
+              className="flex items-center justify-center gap-3 px-8 py-4 rounded-lg text-white transition-all hover:-translate-y-1 active:scale-95"
+              style={{ background: "#25d366", fontSize: "1.02rem", fontWeight: 800, boxShadow: "0 8px 30px rgba(37,211,102,0.32)" }}
             >
-              <MessageCircle size={22} />
-              Solicitar Orçamento pelo WhatsApp
+              <MessageCircle size={21} />
+              Solicitar Cotação
             </a>
             <a
               href={VISIT_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-3 px-8 py-4 rounded text-white transition-all hover:scale-105 active:scale-95 border-2"
-              style={{
-                borderColor: "rgba(255,255,255,0.35)",
-                background: "rgba(255,255,255,0.06)",
-                fontFamily: "'Barlow', sans-serif",
-                fontSize: "1.05rem",
-                fontWeight: 600,
-                backdropFilter: "blur(4px)",
-              }}
+              className="flex items-center justify-center gap-3 px-8 py-4 rounded-lg text-white transition-all hover:-translate-y-1 active:scale-95 border"
+              style={{ borderColor: "rgba(255,255,255,0.35)", background: "rgba(255,255,255,0.07)", fontSize: "1.02rem", fontWeight: 700, backdropFilter: "blur(5px)" }}
             >
-              <HardHat size={20} />
-              Agendar Visita Técnica
+              <MapPin size={20} />
+              Agendar Visita
             </a>
           </motion.div>
 
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="mt-14 flex flex-wrap gap-10"
+            transition={{ duration: 0.7, delay: 0.42 }}
+            className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3 max-w-2xl"
           >
-            {[
-              { value: "30+", label: "Anos de Mercado" },
-              { value: "BH e RMBH", label: "Região Atendida" },
-              { value: "100%", label: "Fabricação Própria" },
-            ].map((stat) => (
-              <div key={stat.label}>
-                <div
-                  style={{
-                    fontFamily: "'Barlow Condensed', sans-serif",
-                    fontSize: "2.4rem",
-                    fontWeight: 800,
-                    lineHeight: 1,
-                    color: "#c8860a",
-                  }}
-                >
-                  {stat.value}
-                </div>
-                <div className="text-white/55 text-sm mt-1" style={{ fontFamily: "'Barlow', sans-serif" }}>
-                  {stat.label}
-                </div>
+            {benefits.map((benefit) => (
+              <div key={benefit} className="flex items-center gap-2 text-white/75 text-sm">
+                <CheckCircle2 size={17} className="text-[#d79a1d] shrink-0" />
+                {benefit}
               </div>
             ))}
           </motion.div>
         </div>
       </div>
 
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce">
-        <ChevronDown size={28} className="text-white/35" />
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 animate-bounce">
+        <ChevronDown size={27} className="text-white/40" />
       </div>
     </section>
   );
@@ -575,65 +562,64 @@ function ProdutosSection() {
     <section id="produtos" className="py-20 lg:py-28" style={{ background: "#f7f6f3" }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
-          <span className="text-xs tracking-widest uppercase" style={{ fontFamily: "'Barlow', sans-serif", fontWeight: 700, color: "#c8860a" }}>
-            Portfólio completo
+          <span className="text-xs tracking-widest uppercase" style={{ fontWeight: 800, color: "#c8860a" }}>
+            Produtos e aplicações
           </span>
           <h2
             className="mt-2"
-            style={{
-              fontFamily: "'Barlow Condensed', sans-serif",
-              fontSize: "clamp(2rem, 4vw, 3rem)",
-              fontWeight: 800,
-              lineHeight: 1.1,
-              color: "#1a1410",
-            }}
+            style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 800, lineHeight: 1.1, color: "#1a1410" }}
           >
-            Nossos Produtos e Soluções
+            Soluções para diferentes tipos de obra
           </h2>
-          <div className="w-14 h-1 bg-[#c8860a] mx-auto mt-4 rounded-full" />
+          <p className="max-w-2xl mx-auto mt-4" style={{ color: "#6b6357", lineHeight: 1.7 }}>
+            Fale diretamente com a Big Lajes para informar as medidas e receber uma cotação adequada à necessidade da sua construção.
+          </p>
+          <div className="w-14 h-1 bg-[#c8860a] mx-auto mt-5 rounded-full" />
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {produtos.map((prod, i) => (
-            <motion.div
+            <motion.article
               key={prod.title}
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 22 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="group bg-white rounded-xl overflow-hidden border transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
+              transition={{ duration: 0.45, delay: i * 0.06 }}
+              className="group bg-white rounded-xl overflow-hidden border flex flex-col transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
               style={{ borderColor: "rgba(26,20,16,0.08)" }}
             >
               <div className="h-1.5" style={{ background: prod.accent ? "#c8860a" : "#2d5a4e" }} />
-              <div className="p-7">
+              <div className="p-6 flex flex-col flex-1">
                 <div
-                  className="w-14 h-14 rounded-xl flex items-center justify-center mb-5 transition-transform duration-300 group-hover:scale-110"
-                  style={{ background: prod.accent ? "rgba(200,134,10,0.1)" : "rgba(45,90,78,0.09)" }}
+                  className="w-13 h-13 rounded-xl flex items-center justify-center mb-5 transition-transform duration-300 group-hover:scale-110"
+                  style={{ background: prod.accent ? "rgba(200,134,10,0.1)" : "rgba(45,90,78,0.09)", width: 52, height: 52 }}
                 >
-                  <prod.icon size={26} style={{ color: prod.accent ? "#c8860a" : "#2d5a4e" }} />
+                  <prod.icon size={25} style={{ color: prod.accent ? "#c8860a" : "#2d5a4e" }} />
                 </div>
-                <h3
-                  className="mb-3"
-                  style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: "1.3rem", fontWeight: 700, color: "#1a1410" }}
-                >
+                <h3 className="mb-3" style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: "1.28rem", fontWeight: 800, color: "#1a1410" }}>
                   {prod.title}
                 </h3>
-                <p className="leading-relaxed mb-5" style={{ fontFamily: "'Barlow', sans-serif", fontSize: "0.92rem", color: "#6b6357" }}>
+                <p className="leading-relaxed mb-5 flex-1" style={{ fontSize: "0.91rem", color: "#6b6357" }}>
                   {prod.desc}
                 </p>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2 mb-5">
                   {prod.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-3 py-1 rounded-full text-xs"
-                      style={{ background: "rgba(26,20,16,0.06)", color: "#1a1410", fontFamily: "'Barlow', sans-serif", fontWeight: 600 }}
-                    >
+                    <span key={tag} className="px-3 py-1 rounded-full text-xs" style={{ background: "rgba(26,20,16,0.06)", color: "#1a1410", fontWeight: 700 }}>
                       {tag}
                     </span>
                   ))}
                 </div>
+                <a
+                  href={WHATSAPP_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-between gap-2 pt-4 border-t transition-colors hover:text-[#c8860a]"
+                  style={{ borderColor: "rgba(26,20,16,0.08)", color: "#1a1410", fontSize: "0.9rem", fontWeight: 800 }}
+                >
+                  Solicitar cotação <ArrowRight size={17} />
+                </a>
               </div>
-            </motion.div>
+            </motion.article>
           ))}
         </div>
       </div>
@@ -773,6 +759,119 @@ function GaleriaSection() {
               </div>
             </motion.div>
           ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+
+const perguntasFrequentes = [
+  {
+    pergunta: "A Big Lajes atende quais regiões?",
+    resposta: "Atendemos Belo Horizonte e cidades da Região Metropolitana. A disponibilidade e o valor do frete são confirmados durante a cotação.",
+  },
+  {
+    pergunta: "A entrega é gratuita?",
+    resposta: "Não. O frete é calculado conforme o endereço da obra, a quantidade solicitada e as condições de entrega.",
+  },
+  {
+    pergunta: "Como solicitar uma cotação?",
+    resposta: "Entre em contato pelo WhatsApp ou telefone e envie as medidas, o projeto ou as informações disponíveis sobre a obra.",
+  },
+  {
+    pergunta: "As vigotas são produzidas sob medida?",
+    resposta: "A produção é definida conforme as informações da obra e a análise realizada durante a cotação.",
+  },
+  {
+    pergunta: "É possível visitar a Big Lajes?",
+    resposta: "Sim. Entre em contato previamente para verificar a disponibilidade e agendar uma visita.",
+  },
+];
+
+function FAQSection() {
+  return (
+    <section id="faq" className="py-20 lg:py-28" style={{ background: "#f7f6f3" }}>
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <span className="text-xs tracking-widest uppercase" style={{ fontWeight: 800, color: "#c8860a" }}>
+            Dúvidas frequentes
+          </span>
+          <h2 className="mt-2" style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 800, color: "#1a1410" }}>
+            Informações antes de solicitar sua cotação
+          </h2>
+          <div className="w-14 h-1 bg-[#c8860a] mx-auto mt-5 rounded-full" />
+        </div>
+
+        <div className="space-y-3">
+          {perguntasFrequentes.map((item) => (
+            <details key={item.pergunta} className="group bg-white rounded-xl border p-5" style={{ borderColor: "rgba(26,20,16,0.08)" }}>
+              <summary className="cursor-pointer list-none flex items-center justify-between gap-4" style={{ fontWeight: 800, color: "#1a1410" }}>
+                {item.pergunta}
+                <span className="text-[#c8860a] text-xl transition-transform group-open:rotate-45">+</span>
+              </summary>
+              <p className="mt-3 pr-8 leading-relaxed" style={{ color: "#6b6357", fontSize: "0.94rem" }}>
+                {item.resposta}
+              </p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function LocalizacaoSection() {
+  return (
+    <section className="py-20 lg:py-24" style={{ background: "#ffffff" }}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-10 items-stretch">
+          <div className="rounded-2xl overflow-hidden min-h-[360px] border" style={{ borderColor: "rgba(26,20,16,0.08)" }}>
+            <iframe
+              title="Localização da Big Lajes"
+              src="https://www.google.com/maps?q=Av.%20N%C3%A9lio%20Cerqueira%2C%20715%20-%20Tirol%2C%20Belo%20Horizonte%20-%20MG&output=embed"
+              width="100%"
+              height="100%"
+              style={{ border: 0, minHeight: 360 }}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </div>
+
+          <div className="rounded-2xl p-8 lg:p-10 flex flex-col justify-center" style={{ background: "#1a1410" }}>
+            <span className="text-xs tracking-widest uppercase" style={{ fontWeight: 800, color: "#c8860a" }}>
+              Visite ou entre em contato
+            </span>
+            <h2 className="mt-3 mb-5 text-white" style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 800, lineHeight: 1.08 }}>
+              Fale diretamente com a Big Lajes
+            </h2>
+            <p className="text-white/65 leading-relaxed mb-7">
+              Solicite uma cotação pelo WhatsApp, ligue para o telefone fixo ou agende uma visita à empresa.
+            </p>
+
+            <div className="space-y-4 mb-8">
+              <a href={MAPS_LINK} target="_blank" rel="noopener noreferrer" className="flex items-start gap-3 text-white/80 hover:text-white transition-colors">
+                <MapPin size={19} className="text-[#c8860a] mt-0.5 shrink-0" />
+                <span>{ADDRESS}</span>
+              </a>
+              <a href={`tel:${PHONE_NUMBER}`} className="flex items-center gap-3 text-white/80 hover:text-white transition-colors">
+                <Phone size={19} className="text-[#c8860a]" /> {PHONE_DISPLAY}
+              </a>
+              <a href={`mailto:${EMAIL}`} className="flex items-center gap-3 text-white/80 hover:text-white transition-colors">
+                <Mail size={19} className="text-[#c8860a]" /> {EMAIL}
+              </a>
+            </div>
+
+            <a
+              href={WHATSAPP_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex w-fit items-center gap-3 px-7 py-4 rounded-lg text-white transition-all hover:-translate-y-1"
+              style={{ background: "#25d366", fontWeight: 800 }}
+            >
+              <MessageCircle size={20} /> Solicitar Cotação
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -1023,6 +1122,8 @@ export default function App() {
         <ProdutosSection />
         <ComoFuncionaSection />
         <GaleriaSection />
+        <FAQSection />
+        <LocalizacaoSection />
         <CTASection />
       </main>
       <Footer />
