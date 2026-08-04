@@ -125,12 +125,30 @@ const passos = [
 ];
 
 const galeria = [
-  { url: "https://images.unsplash.com/photo-1565118387387-add70a563efe?w=800&h=600&fit=crop&auto=format", alt: "Operário trabalhando em obra de construção civil" },
-  { url: "https://images.unsplash.com/photo-1582540730843-f4418d96ccbe?w=800&h=600&fit=crop&auto=format", alt: "Engenheiro com capacete em canteiro de obras" },
-  { url: "https://images.unsplash.com/photo-1694521787162-5373b598945c?w=800&h=600&fit=crop&auto=format", alt: "Construtores em estrutura de concreto" },
-  { url: "https://images.unsplash.com/photo-1541888894402-f3b1af908be4?w=800&h=600&fit=crop&auto=format", alt: "Equipe de trabalho no topo de construção" },
-  { url: "https://images.unsplash.com/photo-1721815693498-cc28507c0ba2?w=800&h=600&fit=crop&auto=format", alt: "Residência moderna construída com lajes treliçadas" },
-  { url: "https://images.unsplash.com/photo-1628012209120-d9db7abf7eab?w=800&h=600&fit=crop&auto=format", alt: "Edifício comercial em construção" },
+  {
+    url: "/biglajes01.jpg",
+    alt: "Lajes treliçadas produzidas pela Big Lajes",
+  },
+  {
+    url: "/biglajes02.jpg",
+    alt: "Produção de lajes treliçadas",
+  },
+  {
+    url: "/obra.png",
+    alt: "Obra utilizando lajes treliçadas",
+  },
+  {
+    url: "/obra2.png",
+    alt: "Cobertura executada com lajes treliçadas",
+  },
+  {
+    url: "/caminhao.png",
+    alt: "Entrega de lajes pela Big Lajes",
+  },
+  {
+    url: "/biglajes.jpg",
+    alt: "Estoque de lajes treliçadas da fábrica",
+  },
 ];
 
 
@@ -279,8 +297,7 @@ function HeroSection() {
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{
-          backgroundImage:
-            "url('https://images.unsplash.com/photo-1565118387387-add70a563efe?w=1920&h=1080&fit=crop&auto=format')",
+          backgroundImage: "url('/biglajes.jpg')",
         }}
       />
       <div
@@ -402,9 +419,8 @@ function HeroSection() {
           {benefits.map((benefit, index) => (
             <div
               key={benefit.label}
-              className={`flex items-center gap-3 py-2 ${
-                index > 0 ? "lg:border-l lg:border-white/15 lg:pl-5" : ""
-              }`}
+              className={`flex items-center gap-3 py-2 ${index > 0 ? "lg:border-l lg:border-white/15 lg:pl-5" : ""
+                }`}
             >
               <benefit.icon
                 size={25}
@@ -571,29 +587,12 @@ function SobreSection() {
             transition={{ duration: 0.7 }}
             className="relative"
           >
-            <div className="relative rounded-xl overflow-hidden" style={{ aspectRatio: "4/3", background: "#2d5a4e" }}>
+            <div className="rounded-2xl overflow-hidden shadow-2xl">
               <img
-                src="https://images.unsplash.com/photo-1772442198624-4fc4d7281e89?w=800&h=600&fit=crop&auto=format"
-                alt="Profissional trabalhando em obra de construção civil"
-                className="w-full h-full object-cover"
+                src="/desenhotecnico.png"
+                alt="Desenho técnico de posicionamento das lajes treliçadas"
+                className="w-full h-auto block"
               />
-              <div
-                className="absolute inset-0"
-                style={{ background: "linear-gradient(to top, rgba(13,27,42,0.5) 0%, transparent 60%)" }}
-              />
-            </div>
-            <div
-              className="absolute -bottom-5 -right-5 rounded-xl p-6 shadow-2xl"
-              style={{ background: "#c8860a" }}
-            >
-              <div
-                style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: "2.4rem", fontWeight: 800, lineHeight: 1, color: "white" }}
-              >
-                30+
-              </div>
-              <div style={{ fontFamily: "'Barlow', sans-serif", fontSize: "0.85rem", color: "rgba(255,255,255,0.9)", marginTop: 4 }}>
-                anos de<br />experiência
-              </div>
             </div>
           </motion.div>
         </div>
@@ -929,7 +928,7 @@ function CTASection() {
       <div
         className="absolute inset-0 opacity-10"
         style={{
-          backgroundImage: "url('https://images.unsplash.com/photo-1694521787162-5373b598945c?w=1920&h=600&fit=crop&auto=format')",
+          background: "#c8860a",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
