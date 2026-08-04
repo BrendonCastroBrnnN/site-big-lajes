@@ -146,8 +146,8 @@ const galeria = [
     alt: "Entrega de lajes pela Big Lajes",
   },
   {
-    url: "/biglajes.jpg",
-    alt: "Estoque de lajes treliçadas da fábrica",
+    url: "/biglajes04.png",
+    alt: "Obra utilizando laje painel",
   },
 ];
 
