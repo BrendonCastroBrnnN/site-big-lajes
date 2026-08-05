@@ -204,7 +204,7 @@ function Navbar({ menuOpen, setMenuOpen }: { menuOpen: boolean; setMenuOpen: (v:
             aria-label="Voltar ao início"
           >
             <img
-              src="/LogoBigLajes.png"
+              src="/logobiglajes.png"
               alt="Big Lajes"
               className="h-16 lg:h-20 w-auto object-contain"
             />
@@ -1002,7 +1002,7 @@ function Footer() {
           <div className="lg:col-span-2">
             <div className="mb-4">
               <img
-                src="/LogoBigLajes.png"
+                src="/logobiglajes.png"
                 alt="Big Lajes"
                 className="h-30 w-auto object-contain"
               />
