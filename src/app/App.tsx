@@ -198,18 +198,16 @@ function Navbar({ menuOpen, setMenuOpen }: { menuOpen: boolean; setMenuOpen: (v:
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-[72px]">
-          <a href="#inicio" className="flex items-center gap-3" aria-label="Voltar ao início">
-            <div className="w-10 h-10 bg-[#c8860a] rounded flex items-center justify-center">
-              <Layers size={22} className="text-white" />
-            </div>
-            <div>
-              <div className="text-white tracking-widest text-xl" style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 800 }}>
-                BIG LAJES
-              </div>
-              <div className="text-[#c8860a] text-[11px] tracking-wider leading-none" style={{ fontWeight: 700 }}>
-                FABRICAÇÃO PRÓPRIA
-              </div>
-            </div>
+          <a
+            href="#inicio"
+            className="flex items-center"
+            aria-label="Voltar ao início"
+          >
+            <img
+              src="/LogoBigLajes.png"
+              alt="Big Lajes"
+              className="h-16 lg:h-20 w-auto object-contain"
+            />
           </a>
 
           <nav className="hidden lg:flex items-center gap-6">
@@ -1002,18 +1000,12 @@ function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-10 border-b" style={{ borderColor: "rgba(255,255,255,0.1)" }}>
           <div className="lg:col-span-2">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 bg-[#c8860a] rounded flex items-center justify-center">
-                <Layers size={21} className="text-white" />
-              </div>
-              <div>
-                <div className="text-white tracking-widest text-xl" style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 800 }}>
-                  BIG LAJES
-                </div>
-                <div className="text-[#c8860a] text-xs tracking-wider" style={{ fontFamily: "'Barlow', sans-serif", fontWeight: 600 }}>
-                  30+ ANOS DE QUALIDADE
-                </div>
-              </div>
+            <div className="mb-4">
+              <img
+                src="/LogoBigLajes.png"
+                alt="Big Lajes"
+                className="h-30 w-auto object-contain"
+              />
             </div>
             <p className="mb-6 max-w-xs leading-relaxed" style={{ fontFamily: "'Barlow', sans-serif", fontSize: "0.88rem", color: "rgba(255,255,255,0.55)" }}>
               Fabricante de lajes treliçadas com mais de 30 anos de experiência no mercado
